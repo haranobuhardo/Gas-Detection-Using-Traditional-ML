@@ -38,7 +38,7 @@ The following table lists the gas sensors used in the dataset and their correspo
 | MQ135  | Air Quality (Smoke, Benzene)|
 
 ## Report Analysis
-For a detailed analysis of our research report, please refer to the PDF file [Report Analysis.pdf](/Report Analysis.pdf). This report provides an in-depth discussion of our data analysis, model evaluation, and conclusions. We encourage you to read this report to gain a better understanding of our methodology and results.
+For a detailed analysis of our research report, please refer to the PDF file [Report Analysis.pdf](/Report-Analysis.pdf). This report provides an in-depth discussion of our data analysis, model evaluation, and conclusions. We encourage you to read this report to gain a better understanding of our methodology and results.
 
 ## Predict Gas Type API (FastAPI)
 
@@ -76,6 +76,7 @@ This API endpoint accepts sensor values as input and returns the predicted gas t
   "MQ8": 696,
   "MQ135": 768
 }
+```
 
 ### Response
 
@@ -96,28 +97,10 @@ This API endpoint accepts sensor values as input and returns the predicted gas t
   "knn_prediction": 'Perfume',
   "knn_probability": 0.83
 }
+```
 
 
-
-Next things to do:
-- Implement OneHotEncoding for Feature Engineering step
-
-
-- Block diagrams for README.md
--- Data processing
--- Data preprocessing
--- Feature Engineering
--- Modeling
--- Evaluation
-- Cara deploy local
-
+Next steps::
 - Create dockerfile
 - Create Github Action workflow
-
-- add random_state to 
-
-- cari literatur reference
-- give comments to notebook (ipynb)
-
-- create report INTRO ML
 - create report ML PROCESS
