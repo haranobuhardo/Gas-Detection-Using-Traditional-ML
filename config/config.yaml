@@ -1,0 +1,60 @@
+dataset_path: data/raw/Gas_Sensors_Measurements.csv
+dataset_processed_path: data/processed/Gas_Sensors_Measurements.csv
+encoder_classes:
+- Mixture
+- NoGas
+- Perfume
+- Smoke
+hyperparameter_tuning_log_path: logs/hyperparameter_tuning_log.json
+int_columns:
+- MQ2
+- MQ3
+- MQ5
+- MQ6
+- MQ7
+- MQ8
+- MQ135
+knn_model_path: models/knn_model.pkl
+label: Gas
+models_training_log_path: logs/models_training_log.json
+obj_columns:
+- Gas
+ovr_model_path: models/ovr_model.pkl
+predictors:
+- MQ2
+- MQ3
+- MQ5
+- MQ6
+- MQ7
+- MQ8
+- MQ135
+print_debug: true
+production_model_path: models/production_model.pkl
+range_sensor_val:
+- 0
+- 1000
+scaler_path: models/scaler.pkl
+target_classes:
+- NoGas
+- Perfume
+- Smoke
+- Mixture
+test_feng_set_path:
+- data/processed/x_test_feng.pkl
+- data/processed/y_test_feng.pkl
+test_set_path:
+- data/processed/x_test.pkl
+- data/processed/y_test.pkl
+train_feng_set_path:
+- data/processed/x_train_feng.pkl
+- data/processed/y_train_feng.pkl
+train_set_path:
+- data/processed/x_train.pkl
+- data/processed/y_train.pkl
+training_log_path: log/training_log.json
+val_feng_set_path:
+- data/processed/x_valid_feng.pkl
+- data/processed/y_valid_feng.pkl
+val_set_path:
+- data/processed/x_valid.pkl
+- data/processed/y_valid.pkl
