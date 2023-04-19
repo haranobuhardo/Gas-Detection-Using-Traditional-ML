@@ -37,6 +37,17 @@ The following table lists the gas sensors used in the dataset and their correspo
 | MQ8    | Hydrogen                    |
 | MQ135  | Air Quality (Smoke, Benzene)|
 
+## Steps Block Diagram
+This block diagram outlines the steps involved in our process, which include:
+### Data Preparation
+![Data Preparation Block Diagram](chart/flow_chart_data_processing.png)
+### Data Pre-processing
+![Data Pre-processing Block Diagram](chart/flow_chart_data_preprocessing.png)
+### Model Training
+![Model Training Block Diagram](chart/flow_chart_modelling.png)
+### Model Evaluation
+![Model Evaluation Block Diagram](chart/flow_chart_evaluation.png)
+
 ## Report Analysis
 For a detailed analysis of our research report, please refer to the PDF file [Report Analysis.pdf](/Report-Analysis.pdf). This report provides an in-depth discussion of our data analysis, model evaluation, and conclusions. We encourage you to read this report to gain a better understanding of our methodology and results.
 
