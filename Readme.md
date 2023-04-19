@@ -40,11 +40,11 @@ The following table lists the gas sensors used in the dataset and their correspo
 ## Steps Block Diagram
 This block diagram outlines the steps involved in our process, which include:
 ### Data Preparation
-![Data Preparation Block Diagram](charts/flow_chart_data_processing.png)
+![Data Preparation Block Diagram](charts/flow_chart_data_preparation.png)
 ### Data Pre-processing
 ![Data Pre-processing Block Diagram](charts/flow_chart_data_preprocessing.png)
 ### Model Training
-![Model Training Block Diagram](charts/flow_chart_modelling.png)
+![Model Training Block Diagram](charts/flow_chart_modeling.png)
 ### Model Evaluation
 ![Model Evaluation Block Diagram](charts/flow_chart_evaluation.png)
 
