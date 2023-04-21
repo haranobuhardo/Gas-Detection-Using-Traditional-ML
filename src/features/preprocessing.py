@@ -47,8 +47,11 @@ def label_encoder(y, target_classes, save_encoder_classes=False, config_file=Non
     return y_label_encoded
 
 def standard_scaler(X, scaler = None):
-    scaler = StandardScaler()
-    X_scaled = scaler.fit_transform(X)
+    if scaler == None:
+        scaler = StandardScaler()
+        scaler.fit(X)
+    
+    X_scaled = scaler.transform(X)
 
     return X_scaled, scaler
 
@@ -64,6 +67,9 @@ if __name__ == '__main__':
     X_train, X_val, X_test, y_train, y_val, y_test = load_data(config)
     print("Done")
 
+    print(X_test)
+    print(type(X_test))
+
     
     print("3. Outliers Removal", end=' - ')
     for column in config['predictors']:
@@ -75,8 +81,8 @@ if __name__ == '__main__':
     print("4. Standard Scaling", end=' - ')
     X_train_feng, scaler = standard_scaler(X_train)
     utils.pickle_dump(scaler, config['scaler_path']) # save scaler after using training data
-    X_test_feng = scaler.transform(X_test)
-    X_val_feng = scaler.transform(X_val)
+    X_test_feng, _ = standard_scaler(X_test, scaler)
+    X_val_feng, _ = standard_scaler(X_val, scaler)
     print("Done")
 
 

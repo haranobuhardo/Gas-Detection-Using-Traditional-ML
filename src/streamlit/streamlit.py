@@ -38,7 +38,7 @@ if st.button("Predict Gas Type"):
         predictions = response.json()
 
         # Display the results
-        st.write(f"Random Forest Prediction: {predictions['rf_prediction']} (Probability: {predictions['rf_probability']:.2f})")
+        # st.write(f"Random Forest Prediction: {predictions['rf_prediction']} (Probability: {predictions['rf_probability']:.2f})")
         st.write(f"k-Nearest Neighbors Prediction: {predictions['knn_prediction']} (Probability: {predictions['knn_probability']:.2f})")
     else:
         st.write("Error: Unable to get predictions. Please check the FastAPI server.")

@@ -17,6 +17,12 @@ def load_data(config):
     df = df.loc[:, config['predictors'] + [config['label']]]
     return df
 
+def predictors_type_conversion(input_data, config):
+    for column in config['int_columns']:
+        input_data[column] = input_data[column].astype('int32')
+
+    return input_data
+
 def check_data(input_data, config):
     # Measure the length of the data
     len_input_data = len(input_data)
@@ -48,6 +54,9 @@ if __name__ == '__main__':
     print("Done")
     print("2. Load dataset", end=' - ')
     df = load_data(config)
+    print("Done")
+    print("3. Data type conversion", end=' - ')
+    df = predictors_type_conversion(df, config)
     print("Done")
     print("3. Data defense (check and test dataframe)", end=' - ')
     check_data(df, config)

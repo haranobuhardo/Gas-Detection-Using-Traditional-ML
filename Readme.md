@@ -1,6 +1,8 @@
-# Gas Detection and Classification Dataset
+# Gas Detection and Classification
 
-This repository contains information about the MultimodalGasData dataset for gas detection and classification. 
+This repository contains information about Gas Detection Classification with Traditional Classification Machine Learning Techniques.
+
+Relying on a single sensor for gas detection may not yield accurate results, as various real-world applications demand robust and reliable detection methods. Implementing a modern ML techniques also requires a lot computational resource, meaning not efficient for an emergency system. Thus, there is a need for developing efficient gas detection systems that utilize simple traditional classification machine learning techniques to enhance the accuracy and reliability of gas detection.
 
 ## Dataset Information
 
@@ -19,7 +21,7 @@ The dataset was generated using the following instruments:
 
 The dataset can be used for the following stages of machine learning:
 
-1. Basic ML - Only using numerical data to classify the current environmental condition (Decision Tree, kNN)
+1. Basic ML - Only using numerical data to classify the current environmental condition (Decision Tree, kNN) -> this is what we are planning to do for the moment.
 2. Intermediate ML - Using OpenCV to add thermal camera images as a model feature (increasing accuracy on low concentration gas)
 3. Adv ML - Implementing deep learning to create a self-learning model
 
@@ -101,6 +103,41 @@ This API endpoint accepts sensor values as input and returns the predicted gas t
 
 #### Example
 
+## Deploy Model Locally
+### Prerequisites
+- Make sure Python and Pip installed in your system (this project use Python 3.10.9 and Pip 23.0.1)
+- Install the required packages from requirements.txt (you may use virtual environment for this)
+```bash
+pip install -r requirements.txt
+```
+
+### Running FastAPI app locally
+1. Open a terminal or command prompt
+2. Navigate to the API project folder
+```bash
+cd Gas-Detection-Using-Traditional-ML/src/api
+```
+3. Start the FastAPI app by running the following command:
+```bash
+uvicorn api:app --reload
+```
+This will start the FastAPI server on [http://localhost:8000](http://localhost:8000).
+
+### Running Streamlit app locally
+1. Open a new terminal or command prompt
+2. Navigate to the Streamlit project folder
+```bash
+cd Gas-Detection-Using-Traditional-ML/src/streamlit
+```
+3. Start the Streamlit app by running the following command:
+```bash
+streamlit run src/streamlit/streamlit.py
+```
+This will start Streamlit app and open it in your default web browser. By default, Streamlit run on [http://localhost:8051](http://localhost:8051)
+
+Now, both FastAPI and Streamlit apps are running locally, and you can interact with the Streamlit app to test and make prediction using the FastAPI and our trained model.
+
+
 ```json
 {
   "rf_prediction": 'Perfume',
@@ -110,8 +147,17 @@ This API endpoint accepts sensor values as input and returns the predicted gas t
 }
 ```
 
+## Retraining Model
+You can re-train the model by executing these python source code sequentially:
+```bash
+python src/data/preparation.py
+python src/features/preprocessing.py
+python src/models/model_training.py
+```
+These scripts will re-load the source dataset, pre-processed it and re-train models based on the newly loaded dataset. 
+NB: You can check the hyperparameter tuning and model training logs at `logs` folder.
 
 Next steps::
-- Create dockerfile
 - Create Github Action workflow
+
 - create report ML PROCESS

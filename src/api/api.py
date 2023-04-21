@@ -53,16 +53,17 @@ async def predict_gas(data: SensorData):
     scaler = utils.pickle_load(config['scaler_path'])
     input_data = scaler.transform(input_data)
 
-    # Make predictions using both models
-    rf_prediction = rf_clf.predict(input_data)
-    rf_prob = rf_clf.predict_proba(input_data)
+    # Make predictions using kNN models (based on our model evaluation performance)
+
+    # rf_prediction = rf_clf.predict(input_data)
+    # rf_prob = rf_clf.predict_proba(input_data)
 
     knn_prediction = knn_clf.predict(input_data)
     knn_prob = knn_clf.predict_proba(input_data)
     # Return the predicted gas type and probability for both models
     return {
-        "rf_prediction": config['encoder_classes'][rf_prediction[0].item()], # item() to convert np.int32 to native python data type
-        "rf_probability": max(rf_prob[0]).item(),
+        # "rf_prediction": config['encoder_classes'][rf_prediction[0].item()], # item() to convert np.int32 to native python data type
+        # "rf_probability": max(rf_prob[0]).item(),
         "knn_prediction": config['encoder_classes'][knn_prediction[0].item()],
         "knn_probability": max(knn_prob[0]).item(),
     }
