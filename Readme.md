@@ -96,12 +96,17 @@ This API endpoint accepts sensor values as input and returns the predicted gas t
 #### Body
 | Parameter        | Type    | Description                                               |
 |------------------|---------|-----------------------------------------------------------|
-| rf_prediction    | int     | Predicted gas type using Random Forest model              |
-| rf_probability   | float   | Probability of the predicted gas type (Random Forest)     |
 | knn_prediction   | int     | Predicted gas type using k-Nearest Neighbors model        |
 | knn_probability  | float   | Probability of the predicted gas type (k-Nearest Neighbors)|
 
 #### Example
+
+```json
+{
+  "knn_prediction": 'Perfume',
+  "knn_probability": 0.83
+}
+```
 
 ## Deploy Model Locally
 ### Prerequisites
@@ -136,16 +141,6 @@ streamlit run src/streamlit/streamlit.py
 This will start Streamlit app and open it in your default web browser. By default, Streamlit run on [http://localhost:8051](http://localhost:8051)
 
 Now, both FastAPI and Streamlit apps are running locally, and you can interact with the Streamlit app to test and make prediction using the FastAPI and our trained model.
-
-
-```json
-{
-  "rf_prediction": 'Perfume',
-  "rf_probability": 0.78,
-  "knn_prediction": 'Perfume',
-  "knn_probability": 0.83
-}
-```
 
 ## Retraining Model
 You can re-train the model by executing these python source code sequentially:
