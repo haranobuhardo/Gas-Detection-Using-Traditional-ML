@@ -152,7 +152,14 @@ python src/models/model_training.py
 These scripts will re-load the source dataset, pre-processed it and re-train models based on the newly loaded dataset. 
 NB: You can check the hyperparameter tuning and model training logs at `logs` folder.
 
-Next steps::
-- Create Github Action workflow
+### Docker Build and Run
+Or if you want to use Docker engine, you can simply build a Docker image of this project and get it run with the following commands:
+```bash
+# make sure you are currently on the project folder
+docker build -t awdawd gas-type-ML .
+docker run -p 8000:8000 -p 8501:8501 gas-type-ML 
+```
+PS: tested on WSL2
 
-- create report ML PROCESS
+## Deployment Report
+If you want to read my report about this ML model solution deployment process on FastAPI and Streamlit, you can [this Medium's article](https://medium.com/@haranobuhardo/traditional-ml-implementation-for-gas-detection-classification-200de8e32bf7)
