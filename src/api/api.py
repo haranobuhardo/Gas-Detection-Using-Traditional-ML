@@ -9,8 +9,8 @@ os.chdir(grandparent_dir)
 
 import src.util as utils
 import src.features.preprocessing as preprocessing
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel, validator
 import numpy as np
 import pandas as pd
 
@@ -34,6 +34,14 @@ class SensorData(BaseModel):
     MQ8: int
     MQ135: int
 
+    # data input validation (range and type) for all (*) fields
+    @validator("*")
+    def check_range(cls, v):
+        if not (config['range_sensor_val'][0] <= v <= config['range_sensor_val'][1]):
+            raise ValueError("Value must be integer between 0 and 1000")
+        return v
+
+
 # Define the FastAPI endpoint
 @app.post("/predict_gas")
 async def predict_gas(data: SensorData):
@@ -49,7 +57,7 @@ async def predict_gas(data: SensorData):
             data.MQ135
         ]
     ])
-    
+
     scaler = utils.pickle_load(config['scaler_path'])
     input_data = scaler.transform(input_data)
 
@@ -60,6 +68,7 @@ async def predict_gas(data: SensorData):
 
     knn_prediction = knn_clf.predict(input_data)
     knn_prob = knn_clf.predict_proba(input_data)
+
     # Return the predicted gas type and probability for both models
     return {
         # "rf_prediction": config['encoder_classes'][rf_prediction[0].item()], # item() to convert np.int32 to native python data type
